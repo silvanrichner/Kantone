@@ -29,8 +29,9 @@ public class XmlIO {
 
 	private static String FILE_URL = ".." + File.separator + "resources" + File.separator + "cantons.xml";
 
+
 	public static Collection<Canton> readXml() {
-		Collection<Canton> cantons = new ArrayList<Canton>();
+		Collection<Canton> cantons = new ArrayList<>();
 
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
