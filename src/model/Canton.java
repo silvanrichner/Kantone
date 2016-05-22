@@ -1,5 +1,9 @@
 package model;
 
+import javafx.scene.effect.ImageInput;
+import javafx.scene.image.Image;
+
+import java.io.File;
 import java.util.Map;
 
 public class Canton{
@@ -9,13 +13,15 @@ public class Canton{
 	private String capital;
 	private int area;
 	private Map<Integer, Integer> population;
+	private File flag;
 
-	public Canton(String name, String abbreviation, String capital, int area, Map<Integer,Integer> population) {
+    public Canton(String name, String abbreviation, String capital, int area, Map<Integer,Integer> population) {
 		this.name = name;
 		this.abbreviation = abbreviation;
 		this.capital = capital;
 		this.area = area;
 		this.population = population;
+		addFlag();
 	}
 
 	public String getName() {
@@ -57,5 +63,18 @@ public class Canton{
 	public void setPopulation(Map<Integer,Integer> population) {
 		this.population = population;
 	}
+
+    public File getFlag() {
+        return flag;
+    }
+
+    public void setFlag(File flag) {
+        this.flag = flag;
+    }
+
+    private void addFlag(){
+        String FILE_URL = "src" + File.separator + "resources" + File.separator + "flags" + File.separator + this.getAbbreviation().toLowerCase() + ".png";
+        this.flag = new File(FILE_URL);
+    }
 
 }

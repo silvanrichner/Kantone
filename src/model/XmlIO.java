@@ -33,6 +33,8 @@ public class XmlIO {
 	public static Collection<Canton> readXml() {
 		Collection<Canton> cantons = new ArrayList<>();
 
+        System.out.println(FILE_URL);
+
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

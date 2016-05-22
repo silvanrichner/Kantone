@@ -18,6 +18,7 @@ public class ModelMain {
 			     System.out.println("    Key: " + entry.getKey() + " Value: " + entry.getValue());
 			}
 		}
+
 		
 		//XmlIO.writeXml(cantons);
 	}
