@@ -26,7 +26,7 @@ public class SplitPane extends javafx.scene.control.SplitPane{
     private void initializeControls(){
         cantonList = new ListView<>(cantons);
         cantonList.setCellFactory(c -> new CantonCell());
-        detailView = new FlowPane();
+        detailView = new DetailView(cantons.get(0));
     }
 
     private void layoutControls(){
