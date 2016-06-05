@@ -17,6 +17,7 @@ public class FinalView extends VBox{
     public FinalView(ObservableList<Canton> cantons){
         initializeControls(cantons);
         layoutControls();
+        addEventHandlers();
     }
 
     private void initializeControls(ObservableList<Canton> cantons){
@@ -27,6 +28,10 @@ public class FinalView extends VBox{
     private void layoutControls(){
         setVgrow(content, Priority.ALWAYS);
         getChildren().addAll(navigationBar, content);
+    }
+
+    private void addEventHandlers(){
+
     }
 
 }
