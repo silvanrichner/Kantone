@@ -17,10 +17,14 @@ public class ModelMain {
 			for (Entry<Integer, Integer> entry : canton.getPopulation().entrySet()) {
 			     System.out.println("    Key: " + entry.getKey() + " Value: " + entry.getValue());
 			}
+			
+			canton.setName(canton.getName() + "testitest");
 		}
 
 		
-		//XmlIO.writeXml(cantons);
+		
+		
+		XmlIO.writeXml(cantons);
 	}
 
 }
