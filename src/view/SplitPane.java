@@ -1,5 +1,7 @@
 package view;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.*;
@@ -11,22 +13,24 @@ import model.Canton;
 public class SplitPane extends javafx.scene.control.SplitPane{
 
     private ListView<Canton> cantonList;
-    private FlowPane detailView;
+    private GridPane detailView;
 
+    private ObjectProperty<Canton> selectedCanton = new SimpleObjectProperty<>();
     private ObservableList<Canton> cantons;
 
     public SplitPane(ObservableList<Canton> cantons){
         this.cantons = cantons;
-        //this.model = model;
+        selectedCanton.setValue(cantons.get(0));
         initializeControls();
         layoutControls();
+        addEventHandlers();
         addBindings();
     }
 
     private void initializeControls(){
         cantonList = new ListView<>(cantons);
         cantonList.setCellFactory(c -> new CantonCell());
-        detailView = new DetailView(cantons.get(0));
+        detailView = new DetailView(selectedCanton);
     }
 
     private void layoutControls(){
@@ -35,8 +39,11 @@ public class SplitPane extends javafx.scene.control.SplitPane{
         setDividerPositions(0.3f, 0.6f);
     }
 
-    private void addBindings(){
+    private void addEventHandlers(){
+    }
 
+    private void addBindings(){
+        selectedCanton.bind(cantonList.focusModelProperty().get().focusedItemProperty());
     }
 
 

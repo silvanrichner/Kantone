@@ -16,7 +16,7 @@ public class CantonCell extends ListCell<Canton>{
         setGraphic(null);
         setText(null);
         if(canton != null){
-            setText(canton.getName());
+            setText(canton.getNameProperty().getValue());
 
             //set up ImageView
             ImageView flagView = new ImageView();

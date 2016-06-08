@@ -1,5 +1,8 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 
@@ -8,59 +11,43 @@ import java.util.Map;
 
 public class Canton{
 	
-	private String name;
-	private String abbreviation;
-	private String capital;
-	private int area;
-	private Map<Integer, Integer> population;
+	private SimpleStringProperty name = new SimpleStringProperty();
+	private SimpleStringProperty abbreviation = new SimpleStringProperty();
+	private SimpleStringProperty capital = new SimpleStringProperty();
+	private IntegerProperty area = new SimpleIntegerProperty();
+	private Map<Integer, IntegerProperty> population;
 	private File flag;
 
-    public Canton(String name, String abbreviation, String capital, int area, Map<Integer,Integer> population) {
-		this.name = name;
-		this.abbreviation = abbreviation;
-		this.capital = capital;
-		this.area = area;
+    public Canton(String name, String abbreviation, String capital, int area, Map<Integer,IntegerProperty> population) {
+		this.name.setValue(name);
+		this.abbreviation.setValue(abbreviation);
+		this.capital.setValue(capital);
+		this.area.setValue(area);
 		this.population = population;
 		addFlag();
 	}
 
-	public String getName() {
+	public SimpleStringProperty getNameProperty() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAbbreviation() {
+	public SimpleStringProperty getAbbreviationProperty() {
 		return abbreviation;
 	}
 
-	public void setAbbreviation(String abbreviation) {
-		this.abbreviation = abbreviation;
-	}
-
-	public String getCapital() {
+	public SimpleStringProperty getCapitalProperty() {
 		return capital;
 	}
 
-	public void setCapital(String capital) {
-		this.capital = capital;
-	}
-
-	public int getArea() {
+	public IntegerProperty getAreaProperty() {
 		return area;
 	}
 
-	public void setArea(int area) {
-		this.area = area;
-	}
-
-	public Map<Integer,Integer> getPopulation() {
+	public Map<Integer,IntegerProperty> getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(Map<Integer,Integer> population) {
+	public void setPopulation(Map<Integer,IntegerProperty> population) {
 		this.population = population;
 	}
 
@@ -73,7 +60,8 @@ public class Canton{
     }
 
     private void addFlag(){
-        String FILE_URL = "src" + File.separator + "resources" + File.separator + "flags" + File.separator + this.getAbbreviation().toLowerCase() + ".png";
+        String FILE_URL = "src" + File.separator + "resources" + File.separator + "flags" + File.separator +
+				this.abbreviation.getValue().toLowerCase() + ".png";
         this.flag = new File(FILE_URL);
     }
 

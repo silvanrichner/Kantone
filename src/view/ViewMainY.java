@@ -26,7 +26,7 @@ public class ViewMainY extends Application{
 
         window.setScene(scene);
         window.setTitle("Test");
-        window.setHeight(600);
+        window.setHeight(800);
         window.setWidth(1000);
         window.show();
     }
