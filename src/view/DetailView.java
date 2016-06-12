@@ -1,6 +1,9 @@
 package view;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -29,6 +32,7 @@ public class DetailView extends GridPane {
     private TextField areaField;
     private List<TextField> inhabitantTextFields;
     private PopulationChart populationChart;
+    private Map<Integer, IntegerProperty> chartValues;
 
     private ObjectProperty<Canton> model;
 
@@ -58,7 +62,10 @@ public class DetailView extends GridPane {
         inhabitantTextFields = new ArrayList<>();
         model.get().getPopulation().values().forEach(i -> inhabitantTextFields.add(createTextField(i.getValue() + "")));
 
-        populationChart = new PopulationChart(model.get().getPopulation());
+        chartValues = new HashMap<>();
+        model.get().getPopulation().forEach((k, v) -> chartValues.put(k, new SimpleIntegerProperty(Integer.parseInt(v.getValue()))));
+
+        populationChart = new PopulationChart(chartValues);
     }
 
     private void layoutControls(){
@@ -113,6 +120,24 @@ public class DetailView extends GridPane {
             capitalField.textProperty().unbindBidirectional(oldValue.getCapitalProperty());
             capitalField.clear();
             capitalField.textProperty().bindBidirectional(newValue.getCapitalProperty());
+            areaField.textProperty().unbindBidirectional(oldValue.getAreaProperty());
+            areaField.textProperty().bindBidirectional(newValue.getAreaProperty());
+
+            model.get().getPopulation().forEach((k, v) -> {
+                if(v.getValue() != "") {
+                    chartValues.put(k, new SimpleIntegerProperty(Integer.parseInt(v.getValue())));
+                }
+            });
+
+            getChildren().remove(populationChart);
+            populationChart = new PopulationChart(chartValues);
+            add(populationChart, 0, 10, 2, 1);
+
+            for(int i = 0; i != inhabitantTextFields.size(); ++i){
+                inhabitantTextFields.get(i).textProperty().unbindBidirectional(oldValue.getPopulation().get(model.get().getYearList().get(i)));
+                inhabitantTextFields.get(i).clear();
+                inhabitantTextFields.get(i).textProperty().bindBidirectional(newValue.getPopulation().get(model.get().getYearList().get(i)));
+            }
         }));
         nameField.textProperty().bindBidirectional(model.get().getNameProperty());
         populationChart.maxWidthProperty().bind(widthProperty().subtract(50));

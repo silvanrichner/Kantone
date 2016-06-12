@@ -3,6 +3,7 @@ package view;
 import java.util.Map;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.chart.LineChart;

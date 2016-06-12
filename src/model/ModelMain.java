@@ -16,9 +16,9 @@ public class ModelMain {
 			System.out.println("    " + canton.getCapitalProperty());
 			System.out.println("    " + canton.getAreaProperty());
 			
-			for (Entry<Integer, IntegerProperty> entry : canton.getPopulation().entrySet()) {
+			/*for (Entry<Integer, IntegerProperty> entry : canton.getPopulation().entrySet()) {
 			     System.out.println("    Key: " + entry.getKey() + " Value: " + entry.getValue());
-			}
+			}*/
 			
 			canton.getNameProperty().setValue(canton.getNameProperty().getValue() + "testitest");
 		}

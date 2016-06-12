@@ -22,6 +22,8 @@ import javax.xml.transform.stream.StreamResult;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -57,8 +59,8 @@ public class XmlIO {
 					String name = cantonElement.getElementsByTagName("name").item(0).getTextContent();
 					String abbreviation = cantonElement.getElementsByTagName("abbreviation").item(0).getTextContent();
 					String capital = cantonElement.getElementsByTagName("capital").item(0).getTextContent();
-					int area = Integer.valueOf(cantonElement.getElementsByTagName("area").item(0).getTextContent());
-					Map<Integer, IntegerProperty> population = new TreeMap<>();
+					String area = cantonElement.getElementsByTagName("area").item(0).getTextContent();
+					Map<Integer, StringProperty> population = new TreeMap<>();
 
 					Element populationElement = (Element) cantonElement.getElementsByTagName("populationdata").item(0);
 					NodeList populationNodes = populationElement.getElementsByTagName("datapoint");
@@ -69,8 +71,8 @@ public class XmlIO {
 						if (populationNode.getNodeType() == Node.ELEMENT_NODE) {
 							Integer year = Integer
 									.valueOf(((Element) populationNodes.item(j)).getElementsByTagName("year").item(0).getTextContent());
-							IntegerProperty amount = new SimpleIntegerProperty(Integer.valueOf(
-									((Element) populationNodes.item(j)).getElementsByTagName("population").item(0).getTextContent()));
+							StringProperty amount = new SimpleStringProperty(
+									((Element) populationNodes.item(j)).getElementsByTagName("population").item(0).getTextContent());
 							population.put(year, amount);
 						}
 					}
@@ -113,11 +115,11 @@ public class XmlIO {
 				cantonElement.appendChild(capitalElement);
 				
 				Element areaElement = doc.createElement("area");
-				areaElement.setTextContent(Integer.toString(canton.getAreaProperty().getValue()));
+				areaElement.setTextContent(canton.getAreaProperty().getValue());
 				cantonElement.appendChild(areaElement);
 				
 				Element populationdataElement = doc.createElement("populationdata");
-				for (Entry<Integer, IntegerProperty> entry : canton.getPopulation().entrySet()) {
+				for (Entry<Integer, StringProperty> entry : canton.getPopulation().entrySet()) {
 					Element datapointElement = doc.createElement("datapoint");
 					
 					Element yearElement = doc.createElement("year");
