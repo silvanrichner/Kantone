@@ -15,14 +15,11 @@ import model.XmlIO;
 import java.io.File;
 
 /**
- * Created by yanni on 17.05.2016.
+ * Created by yanni on 17.05.2016
  */
 public class NavigationBar extends HBox{
 
     private Button save;
-    private Button redo;
-    private Button undo;
-    private Button home;
 
     private CantonList model;
 
@@ -34,16 +31,14 @@ public class NavigationBar extends HBox{
     }
 
     private void initializeControls(){
+        this.setId("toolbar");
         save = initializeButton("save");
-        redo = initializeButton("redo");
-        undo = new Button("UnDo");
-        home = new Button("Home");
     }
 
     private void layoutControls(){
         setMaxHeight(30);
         setPadding(new Insets(5));
-        getChildren().addAll(save, undo, redo, home);
+        getChildren().add(save);
     }
 
     private Button initializeButton(String name){

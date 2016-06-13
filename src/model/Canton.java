@@ -1,9 +1,6 @@
 package model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 
@@ -21,6 +18,7 @@ public class Canton{
 	private SimpleStringProperty area = new SimpleStringProperty();
 	private Map<Integer, StringProperty> population;
 	private File flag;
+    private ObjectProperty<Image> location = new SimpleObjectProperty<>();
 
     public Canton(String name, String abbreviation, String capital, String area, Map<Integer, StringProperty> population) {
 		this.name.setValue(name);
@@ -28,7 +26,7 @@ public class Canton{
 		this.capital.setValue(capital);
 		this.area.setValue(area);
 		this.population = population;
-		addFlag();
+		addImages();
 	}
 
 	public SimpleStringProperty getNameProperty() {
@@ -55,14 +53,17 @@ public class Canton{
         return flag;
     }
 
-    public void setFlag(File flag) {
-        this.flag = flag;
+    public ObjectProperty<Image> getLocationImageProperty(){
+        return location;
     }
 
-    private void addFlag(){
-        String FILE_URL = "src" + File.separator + "resources" + File.separator + "flags" + File.separator +
+    private void addImages(){
+        final String FLAG_URL = "src" + File.separator + "resources" + File.separator + "flags" + File.separator +
 				this.abbreviation.getValue().toLowerCase() + ".png";
-        this.flag = new File(FILE_URL);
+        this.flag = new File(FLAG_URL);
+        final String LOCATION_URL = "src" + File.separator + "resources" + File.separator + "positions" + File.separator +
+                this.abbreviation.getValue().toLowerCase() + ".png";
+        this.location.setValue(new Image(new File(LOCATION_URL).toURI().toString()));
     }
 
 	public int levenshteinDistance(String a, String[] b){

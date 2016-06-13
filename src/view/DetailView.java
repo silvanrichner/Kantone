@@ -1,15 +1,17 @@
 package view;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import com.sun.rowset.internal.Row;
+import javafx.beans.property.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 import model.Canton;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -25,6 +27,7 @@ public class DetailView extends GridPane {
     private Label area;
     private List<Label> inhabitantLabels;
 
+    private ImageView locationView;
     private TextField nameField;
     private TextField abbreviationField;
     private TextField capitalField;
@@ -44,6 +47,7 @@ public class DetailView extends GridPane {
     }
 
     private void initializeControls(){
+        this.setId("detail-view");
         where = createLabel("Wo ist der Kanton?");
         where.setFont(new Font(where.getFont().getName(), 18));
         name = createLabel("Name");
@@ -53,6 +57,7 @@ public class DetailView extends GridPane {
         inhabitantLabels = new ArrayList<>();
         model.get().getPopulation().keySet().forEach(i -> inhabitantLabels.add(createLabel("Einwohner " + i)));
 
+        locationView = new ImageView(model.getValue().getLocationImageProperty().getValue());
         nameField = createTextField(model.getName());
         abbreviationField = createTextField(model.get().getAbbreviationProperty().getValue());
         capitalField = createTextField(model.get().getCapitalProperty().getValue());
@@ -68,18 +73,21 @@ public class DetailView extends GridPane {
     }
 
     private void layoutControls(){
-        RowConstraints rc = new RowConstraints();
-        rc.setVgrow(Priority.ALWAYS);
-        for(int i = 0; i != 11; ++i){
-            getRowConstraints().add(rc);
+
+        //this.gridLinesVisibleProperty().setValue(true);
+        getRowConstraints().add(createColumnConstraint(130));
+        for(int i = 0; i != 9; ++i){
+            getRowConstraints().add(createColumnConstraint(30));
         }
+        getRowConstraints().add(createColumnConstraint(300));
+
         ColumnConstraints cc1 = new ColumnConstraints();
         cc1.setHgrow(Priority.ALWAYS);
-        cc1.setPercentWidth(40);
+        cc1.percentWidthProperty().setValue(40);
         getColumnConstraints().add(cc1);
         ColumnConstraints cc2 = new ColumnConstraints();
         cc2.setHgrow(Priority.ALWAYS);
-        cc2.setPercentWidth(60);
+        cc2.percentWidthProperty().setValue(60);
         getColumnConstraints().add(cc2);
 
         add(where, 0, 0);
@@ -92,6 +100,9 @@ public class DetailView extends GridPane {
             add(l, 0, index++);
         }
 
+        locationView.fitHeightProperty().setValue(120);
+        locationView.preserveRatioProperty().setValue(true);
+        add(locationView, 1, 0);
         add(nameField, 1, 1);
         add(abbreviationField, 1, 2);
         add(capitalField, 1, 3);
@@ -106,10 +117,23 @@ public class DetailView extends GridPane {
     }
 
     private void addEventHandlers(){
+        for(TextField textField : inhabitantTextFields){
+            textField.setOnAction(e -> {
+                model.get().getPopulation().forEach((k, v) -> {
+                    if(v.getValue() != "") {
+                        chartValues.put(k, new SimpleIntegerProperty(Integer.parseInt(v.getValue())));
+                    }
+                });
+                getChildren().remove(populationChart);
+                populationChart = new PopulationChart(chartValues);
+                add(populationChart, 0, 10, 2, 1);
+            });
+        }
     }
 
     private void addBindings(){
         model.addListener(((observable, oldValue, newValue) -> {
+            locationView.imageProperty().bind(model.get().getLocationImageProperty());
             nameField.textProperty().unbindBidirectional(oldValue.getNameProperty());
             nameField.clear();
             nameField.textProperty().bindBidirectional(newValue.getNameProperty());
@@ -122,6 +146,14 @@ public class DetailView extends GridPane {
             areaField.textProperty().unbindBidirectional(oldValue.getAreaProperty());
             areaField.textProperty().bindBidirectional(newValue.getAreaProperty());
 
+            for(int i = 0; i != inhabitantTextFields.size(); ++i){
+                inhabitantTextFields.get(i).textProperty().unbindBidirectional(model.getValue().getPopulation()
+                        .get(model.get().getYearList().get(i)));
+                inhabitantTextFields.get(i).clear();
+                inhabitantTextFields.get(i).textProperty().bindBidirectional(model.getValue().getPopulation()
+                        .get(model.get().getYearList().get(i)));
+            }
+
             model.get().getPopulation().forEach((k, v) -> {
                 if(v.getValue() != "") {
                     chartValues.put(k, new SimpleIntegerProperty(Integer.parseInt(v.getValue())));
@@ -130,14 +162,12 @@ public class DetailView extends GridPane {
 
             getChildren().remove(populationChart);
             populationChart = new PopulationChart(chartValues);
+            populationChart.maxWidthProperty().bind(widthProperty().subtract(50));
             add(populationChart, 0, 10, 2, 1);
-
-            for(int i = 0; i != inhabitantTextFields.size(); ++i){
-                inhabitantTextFields.get(i).textProperty().unbindBidirectional(oldValue.getPopulation().get(model.get().getYearList().get(i)));
-                inhabitantTextFields.get(i).clear();
-                inhabitantTextFields.get(i).textProperty().bindBidirectional(newValue.getPopulation().get(model.get().getYearList().get(i)));
-            }
         }));
+        for(int i = 0; i != inhabitantTextFields.size(); ++i){
+            inhabitantTextFields.get(i).textProperty().bindBidirectional(model.getValue().getPopulation().get(model.get().getYearList().get(i)));
+        }
         nameField.textProperty().bindBidirectional(model.get().getNameProperty());
         populationChart.maxWidthProperty().bind(widthProperty().subtract(50));
     }
@@ -150,8 +180,15 @@ public class DetailView extends GridPane {
 
     private TextField createTextField(String text){
         TextField textField = new TextField(text);
-        textField.maxWidthProperty().bind(widthProperty().divide(2));
+        textField.maxWidthProperty().setValue(200);
         return textField;
+    }
+
+    private RowConstraints createColumnConstraint(double maxHeigth){
+        RowConstraints temp = new RowConstraints();
+        temp.maxHeightProperty().setValue(maxHeigth);
+        temp.setVgrow(Priority.ALWAYS);
+        return temp;
     }
 
 }

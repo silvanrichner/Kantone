@@ -31,6 +31,7 @@ public class ViewMainY extends Application{
         window.setTitle("Test");
         window.setHeight(800);
         window.setWidth(1000);
+        window.setMinWidth(1000);
         window.show();
     }
 
