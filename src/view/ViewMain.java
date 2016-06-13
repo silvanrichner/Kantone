@@ -24,7 +24,7 @@ public class ViewMain extends Application{
 //		stage.setScene(scene);
 //	    stage.show();
 		
-		Scene scene = new Scene(new MapSelectionButton());
+		//Scene scene = new Scene(new MapSelectionButton());
 	}
 
 }
