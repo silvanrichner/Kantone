@@ -30,6 +30,7 @@ public class SplitPane extends javafx.scene.control.SplitPane{
         layoutControls();
         addEventHandlers();
         addBindings();
+        System.out.println();
     }
 
     private void initializeControls(){
