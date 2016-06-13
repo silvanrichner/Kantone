@@ -23,6 +23,8 @@ public class ViewMainY extends Application{
         ObservableList<Canton> cantons = FXCollections.observableArrayList(XmlIO.readXml()); // future model
         Parent root = new FinalView(cantons);
         Scene scene = new Scene(root);
+        String style = getClass().getResource("styles.css").toExternalForm();
+        scene.getStylesheets().add(style);
 
         window.setScene(scene);
         window.setTitle("Test");
