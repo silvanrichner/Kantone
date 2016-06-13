@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <cantons>
 <canton>
-<name>Aargautestitest</name>
+<name>Aargau</name>
 <abbreviation>AG</abbreviation>
 <capital>Aarau</capital>
 <area>1404</area>
@@ -29,7 +29,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Appenzell Ausserrhodentestitest</name>
+<name>Appenzell Ausserrhoden</name>
 <abbreviation>AR</abbreviation>
 <capital>Herisau</capital>
 <area>243</area>
@@ -57,7 +57,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Appenzell Innerrhodentestitest</name>
+<name>Appenzell Innerrhoden</name>
 <abbreviation>AI</abbreviation>
 <capital>Appenzell</capital>
 <area>173</area>
@@ -85,7 +85,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Basel-Landschafttestitest</name>
+<name>Basel-Landschaft</name>
 <abbreviation>BL</abbreviation>
 <capital>Liestal</capital>
 <area>518</area>
@@ -113,7 +113,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Basel-Stadttestitest</name>
+<name>Basel-Stadt</name>
 <abbreviation>BS</abbreviation>
 <capital>Basel</capital>
 <area>37</area>
@@ -141,7 +141,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Berntestitest</name>
+<name>Bern</name>
 <abbreviation>BE</abbreviation>
 <capital>Bern</capital>
 <area>5941</area>
@@ -169,7 +169,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Freiburgtestitest</name>
+<name>Freiburg</name>
 <abbreviation>FR</abbreviation>
 <capital>Freiburg</capital>
 <area>1671</area>
@@ -197,7 +197,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Genftestitest</name>
+<name>Genf</name>
 <abbreviation>Ge</abbreviation>
 <capital>Genf</capital>
 <area>282</area>
@@ -225,7 +225,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Glarustestitest</name>
+<name>Glarus</name>
 <abbreviation>GL</abbreviation>
 <capital>Glarus</capital>
 <area>685</area>
@@ -253,7 +253,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Graubündentestitest</name>
+<name>Graubünden</name>
 <abbreviation>GR</abbreviation>
 <capital>Chur</capital>
 <area>7105</area>
@@ -281,7 +281,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Juratestitest</name>
+<name>Jura</name>
 <abbreviation>JU</abbreviation>
 <capital>Delsberg</capital>
 <area>836</area>
@@ -309,7 +309,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Luzerntestitest</name>
+<name>Luzern</name>
 <abbreviation>LU</abbreviation>
 <capital>Luzern</capital>
 <area>1493</area>
@@ -337,7 +337,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Neuenburgtestitest</name>
+<name>Neuenburg</name>
 <abbreviation>NE</abbreviation>
 <capital>Neuenburg</capital>
 <area>803</area>
@@ -365,8 +365,8 @@
 </populationdata>
 </canton>
 <canton>
-<name>Nidwaldentestitest</name>
-<abbreviation>NI</abbreviation>
+<name>Nidwalden</name>
+<abbreviation>NW</abbreviation>
 <capital>Stans</capital>
 <area>276</area>
 <populationdata>
@@ -393,7 +393,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Obwaldentestitest</name>
+<name>Obwalden</name>
 <abbreviation>OW</abbreviation>
 <capital>Sarnen</capital>
 <area>490</area>
@@ -421,35 +421,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Juratestitest</name>
-<abbreviation>JU</abbreviation>
-<capital>Delsberg</capital>
-<area>836</area>
-<populationdata>
-<datapoint>
-<year>1980</year>
-<population>64986</population>
-</datapoint>
-<datapoint>
-<year>1990</year>
-<population>66163</population>
-</datapoint>
-<datapoint>
-<year>2000</year>
-<population>68224</population>
-</datapoint>
-<datapoint>
-<year>2010</year>
-<population>70032</population>
-</datapoint>
-<datapoint>
-<year>2014</year>
-<population>72410</population>
-</datapoint>
-</populationdata>
-</canton>
-<canton>
-<name>Schaffausentestitest</name>
+<name>Schaffausen</name>
 <abbreviation>SH</abbreviation>
 <capital>Schaffausen</capital>
 <area>298</area>
@@ -477,7 +449,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Schwyztestitest</name>
+<name>Schwyz</name>
 <abbreviation>SZ</abbreviation>
 <capital>Schwyz</capital>
 <area>908</area>
@@ -505,7 +477,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Solothurntestitest</name>
+<name>Solothurn</name>
 <abbreviation>SO</abbreviation>
 <capital>Solothurn</capital>
 <area>791</area>
@@ -533,7 +505,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>St. Gallentestitest</name>
+<name>St. Gallen</name>
 <abbreviation>SG</abbreviation>
 <capital>St. Gallen</capital>
 <area>2026</area>
@@ -561,7 +533,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Thurgautestitest</name>
+<name>Thurgau</name>
 <abbreviation>TG</abbreviation>
 <capital>Frauenfeld</capital>
 <area>991</area>
@@ -589,7 +561,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Tessintestitest</name>
+<name>Tessin</name>
 <abbreviation>TI</abbreviation>
 <capital>Bellinzona</capital>
 <area>2812</area>
@@ -617,7 +589,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Uritestitest</name>
+<name>Uri</name>
 <abbreviation>UR</abbreviation>
 <capital>Altdorf</capital>
 <area>1077</area>
@@ -645,7 +617,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Wallistestitest</name>
+<name>Wallis</name>
 <abbreviation>VS</abbreviation>
 <capital>Sitten</capital>
 <area>5225</area>
@@ -673,7 +645,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Waadttestitest</name>
+<name>Waadt</name>
 <abbreviation>VD</abbreviation>
 <capital>Lausanne</capital>
 <area>3212</area>
@@ -701,7 +673,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Zugtestitest</name>
+<name>Zug</name>
 <abbreviation>ZG</abbreviation>
 <capital>Zug</capital>
 <area>239</area>
@@ -729,7 +701,7 @@
 </populationdata>
 </canton>
 <canton>
-<name>Zürichtestitest</name>
+<name>Zürich</name>
 <abbreviation>ZH</abbreviation>
 <capital>Zürich</capital>
 <area>1729</area>
