@@ -31,7 +31,6 @@ public class SplitPane extends javafx.scene.control.SplitPane{
         layoutControls();
         addEventHandlers();
         addBindings();
-        System.out.println();
     }
 
     private void initializeControls(){
@@ -67,7 +66,7 @@ public class SplitPane extends javafx.scene.control.SplitPane{
         cantonList.fixedCellSizeProperty().setValue(80);
         getItems().addAll(navigation, detailView);
         navigation.maxWidthProperty().setValue(350);
-        navigation.minWidthProperty().setValue(280);
+        navigation.minWidthProperty().setValue(230);
         detailView.minWidthProperty().setValue(520);
         setDividerPositions(0.3f, 0.6f);
     }

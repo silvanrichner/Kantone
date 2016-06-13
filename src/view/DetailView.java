@@ -74,7 +74,6 @@ public class DetailView extends GridPane {
 
     private void layoutControls(){
 
-        //this.gridLinesVisibleProperty().setValue(true);
         getRowConstraints().add(createColumnConstraint(130));
         for(int i = 0; i != 9; ++i){
             getRowConstraints().add(createColumnConstraint(30));
@@ -133,37 +132,38 @@ public class DetailView extends GridPane {
 
     private void addBindings(){
         model.addListener(((observable, oldValue, newValue) -> {
-            locationView.imageProperty().bind(model.get().getLocationImageProperty());
-            nameField.textProperty().unbindBidirectional(oldValue.getNameProperty());
-            nameField.clear();
-            nameField.textProperty().bindBidirectional(newValue.getNameProperty());
-            abbreviationField.textProperty().unbindBidirectional(oldValue.getAbbreviationProperty());
-            abbreviationField.clear();
-            abbreviationField.textProperty().bindBidirectional(newValue.getAbbreviationProperty());
-            capitalField.textProperty().unbindBidirectional(oldValue.getCapitalProperty());
-            capitalField.clear();
-            capitalField.textProperty().bindBidirectional(newValue.getCapitalProperty());
-            areaField.textProperty().unbindBidirectional(oldValue.getAreaProperty());
-            areaField.textProperty().bindBidirectional(newValue.getAreaProperty());
-
-            for(int i = 0; i != inhabitantTextFields.size(); ++i){
-                inhabitantTextFields.get(i).textProperty().unbindBidirectional(model.getValue().getPopulation()
-                        .get(model.get().getYearList().get(i)));
-                inhabitantTextFields.get(i).clear();
-                inhabitantTextFields.get(i).textProperty().bindBidirectional(model.getValue().getPopulation()
-                        .get(model.get().getYearList().get(i)));
+            if(newValue == null){
+                return;
             }
+            try {
+                locationView.imageProperty().bind(model.get().getLocationImageProperty());
+                nameField.textProperty().unbindBidirectional(oldValue.getNameProperty());
+                nameField.textProperty().bindBidirectional(newValue.getNameProperty());
+                abbreviationField.textProperty().unbindBidirectional(oldValue.getAbbreviationProperty());
+                abbreviationField.textProperty().bindBidirectional(newValue.getAbbreviationProperty());
+                capitalField.textProperty().unbindBidirectional(oldValue.getCapitalProperty());
+                capitalField.textProperty().bindBidirectional(newValue.getCapitalProperty());
+                areaField.textProperty().unbindBidirectional(oldValue.getAreaProperty());
+                areaField.textProperty().bindBidirectional(newValue.getAreaProperty());
 
-            model.get().getPopulation().forEach((k, v) -> {
-                if(v.getValue() != "") {
-                    chartValues.put(k, new SimpleIntegerProperty(Integer.parseInt(v.getValue())));
+                for(int i = 0; i != inhabitantTextFields.size(); ++i){
+                    inhabitantTextFields.get(i).textProperty().unbindBidirectional(oldValue.getPopulation()
+                            .get(model.get().getYearList().get(i)));
+                    inhabitantTextFields.get(i).textProperty().bindBidirectional(newValue.getPopulation()
+                            .get(model.get().getYearList().get(i)));
                 }
-            });
 
-            getChildren().remove(populationChart);
-            populationChart = new PopulationChart(chartValues);
-            populationChart.maxWidthProperty().bind(widthProperty().subtract(50));
-            add(populationChart, 0, 10, 2, 1);
+                model.get().getPopulation().forEach((k, v) -> {
+                    if(v.getValue() != "") {
+                        chartValues.put(k, new SimpleIntegerProperty(Integer.parseInt(v.getValue())));
+                    }
+                });
+
+                getChildren().remove(populationChart);
+                populationChart = new PopulationChart(chartValues);
+                populationChart.maxWidthProperty().bind(widthProperty().subtract(50));
+                add(populationChart, 0, 10, 2, 1);
+            } catch (NullPointerException e) {}
         }));
         for(int i = 0; i != inhabitantTextFields.size(); ++i){
             inhabitantTextFields.get(i).textProperty().bindBidirectional(model.getValue().getPopulation().get(model.get().getYearList().get(i)));

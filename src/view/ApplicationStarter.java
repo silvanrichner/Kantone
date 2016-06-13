@@ -13,7 +13,7 @@ import model.XmlIO;
 /**
  * Created by yanni on 17.05.2016
  */
-public class ViewMainY extends Application{
+public class ApplicationStarter extends Application{
 
     public static void main(String... args){
         launch(args);
@@ -31,7 +31,8 @@ public class ViewMainY extends Application{
         window.setTitle("Test");
         window.setHeight(800);
         window.setWidth(1000);
-        window.setMinWidth(1000);
+        window.setMinWidth(800);
+        window.setMinHeight(650);
         window.show();
     }
 
