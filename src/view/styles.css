@@ -1,5 +1,40 @@
-.list-cell {
+.list-cell:even {
+     -fx-background-color: #f1f1f1;
+     -fx-font-family: "Roboto";
+}
+
+ .list-cell {
+     -fx-background-color: #b2ebf2;
+ }
+
+ .list-cell:focused {
+    -fx-background-color: #00bcd4;
+ }
+
+ .list-cell .label {
+    -fx-font-family: "Roboto";
+ }
+
+ #toolbar{
+    -fx-background-color: #00bcd4;
+ }
+
+  #toolbar .button{
+     -fx-background-color: #00bcd4;
+  }
+
+#detail-view{
     -fx-background-color: #f1f1f1;
-    -fx-border-color: #000000;
-    -fx-font-family: "Roboto Light";
+}
+
+#detail-view .text-field{
+    -fx-font-family: "Roboto";
+    -fx-background-color: #f1f1f1;
+    -fx-background-color: #a9a9a9 , #f1f1f1 , #f1f1f1;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+}
+
+#detail-view .text-field:focused{
+    -fx-background-color: #00bcd4 , f1f1f1 , f1f1f1;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1
 }

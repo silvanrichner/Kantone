@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
@@ -65,10 +66,9 @@ public class SplitPane extends javafx.scene.control.SplitPane{
     private void layoutControls(){
         cantonList.fixedCellSizeProperty().setValue(80);
         getItems().addAll(navigation, detailView);
-        cantonList.minWidthProperty().setValue(280);
-        cantonList.maxWidthProperty().setValue(350);
+        navigation.maxWidthProperty().setValue(350);
+        navigation.minWidthProperty().setValue(280);
         detailView.minWidthProperty().setValue(520);
-        getItems().addAll(cantonList, detailView);
         setDividerPositions(0.3f, 0.6f);
     }
 

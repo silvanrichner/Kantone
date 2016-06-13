@@ -21,7 +21,7 @@ public class CantonCell extends ListCell<Canton>{
 
             //set up ImageView
             ImageView flagView = new ImageView();
-            flagView.fitHeightProperty().bind(getListView().fixedCellSizeProperty().subtract(5));
+            flagView.fitHeightProperty().bind(getListView().fixedCellSizeProperty().subtract(8));
             flagView.preserveRatioProperty().setValue(true);
 
             if(canton.getFlag().canRead()){
