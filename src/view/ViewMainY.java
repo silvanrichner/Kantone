@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Canton;
+import model.CantonList;
 import model.XmlIO;
 
 /**
@@ -20,8 +21,8 @@ public class ViewMainY extends Application{
 
     @Override
     public void start(Stage window){
-        ObservableList<Canton> cantons = FXCollections.observableArrayList(XmlIO.readXml()); // future model
-        Parent root = new FinalView(cantons);
+        CantonList model = new CantonList(FXCollections.observableArrayList(XmlIO.readXml()));
+        Parent root = new FinalView(model);
         Scene scene = new Scene(root);
 
         window.setScene(scene);

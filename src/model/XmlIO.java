@@ -127,7 +127,7 @@ public class XmlIO {
 					datapointElement.appendChild(yearElement);
 					
 					Element populationElement = doc.createElement("population");
-					populationElement.setTextContent(entry.getValue().toString());
+					populationElement.setTextContent(entry.getValue().getValue());
 					datapointElement.appendChild(populationElement);
 					
 					populationdataElement.appendChild(datapointElement);

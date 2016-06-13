@@ -9,6 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import model.CantonList;
+import model.XmlIO;
 
 import java.io.File;
 
@@ -22,9 +24,13 @@ public class NavigationBar extends HBox{
     private Button undo;
     private Button home;
 
-    public NavigationBar(){
+    private CantonList model;
+
+    public NavigationBar(CantonList model){
+        this.model = model;
         initializeControls();
         layoutControls();
+        addEventHandlers();
     }
 
     private void initializeControls(){
@@ -53,6 +59,10 @@ public class NavigationBar extends HBox{
         } else {
             return null;
         }
+    }
+
+    private void addEventHandlers(){
+        save.setOnAction(e -> XmlIO.writeXml(model.getCantonListProperty().getValue()));
     }
 
 }

@@ -51,10 +51,6 @@ public class Canton{
 		return population;
 	}
 
-	public void setPopulation(Map<Integer, StringProperty> population) {
-		this.population = population;
-	}
-
     public File getFlag() {
         return flag;
     }
