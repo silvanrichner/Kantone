@@ -35,7 +35,7 @@ public class SplitPane extends javafx.scene.control.SplitPane{
     private void initializeControls(){
         cantonList = new ListView<>(model.getCantonListProperty().getValue());
 
-        FilteredList<Canton> filteredData = new FilteredList<Canton>(cantons, s -> true);
+        FilteredList<Canton> filteredData = new FilteredList<Canton>(model.getCantonListProperty().getValue(), s -> true);
         SortedList<Canton> sortedData = new SortedList<>(filteredData, (s1, s2) -> s1.getNameProperty().getValue()
                 .compareTo(s2.getNameProperty().getValue()));
 
