@@ -1,7 +1,9 @@
 package view;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -58,7 +60,15 @@ public class NavigationBar extends HBox{
     }
 
     private void addEventHandlers(){
-        save.setOnAction(e -> XmlIO.writeXml(model.getCantonListProperty().getValue()));
+        save.setOnAction(e -> {
+            XmlIO.writeXml(model.getCantonListProperty().getValue());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Daten wruden gespeichert");
+            alert.show();
+        });
+    }
+
+    public Button getSaveButtoon(){
+        return save;
     }
 
 }

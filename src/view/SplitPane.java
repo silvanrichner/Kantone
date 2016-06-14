@@ -1,7 +1,10 @@
 package view;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -22,6 +25,7 @@ public class SplitPane extends javafx.scene.control.SplitPane{
     private GridPane detailView;
     private BorderPane navigation;
 
+    private BooleanBinding buttonDisableBinding;
     private ObjectProperty<Canton> selectedCanton = new SimpleObjectProperty<>();
     private CantonList model;
 
@@ -77,6 +81,19 @@ public class SplitPane extends javafx.scene.control.SplitPane{
     }
 
     private void addBindings(){
-        selectedCanton.bind(cantonList.focusModelProperty().get().focusedItemProperty());
+        selectedCanton.bind(cantonList.selectionModelProperty().get().selectedItemProperty());
+        buttonDisableBinding = new BooleanBinding() {
+            {
+                super.bind(cantonList.selectionModelProperty().get().selectedItemProperty());
+            }
+            @Override
+            protected boolean computeValue() {
+                return cantonList.selectionModelProperty().get().selectedItemProperty().getValue() == null;
+            }
+        };
+    }
+
+    public BooleanBinding buttonDisableBinding(){
+        return buttonDisableBinding;
     }
 }

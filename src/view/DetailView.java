@@ -40,6 +40,7 @@ public class DetailView extends GridPane {
         initializeControls();
         layoutControls();
         addEventHandlers();
+        addChangeListeners();
         addBindings();
     }
 
@@ -125,7 +126,7 @@ public class DetailView extends GridPane {
         }
     }
 
-    private void addBindings() {
+    private void addChangeListeners(){
         model.addListener(((observable, oldValue, newValue) -> {
             if(oldValue != null){
                 nameField.textProperty().unbindBidirectional(oldValue.getNameProperty());
@@ -162,6 +163,9 @@ public class DetailView extends GridPane {
                 add(populationChart, 0, 10, 2, 1);
             }
         }));
+    }
+
+    private void addBindings() {
         for (int i = 0; i != inhabitantTextFields.size(); ++i) {
             inhabitantTextFields.get(i).textProperty().bindBidirectional(model.getValue().getPopulation().get(model.get().getYearList().get(i)));
         }
