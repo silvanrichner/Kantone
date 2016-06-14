@@ -1,14 +1,13 @@
 package view;
 
-import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import model.Canton;
 import model.CantonList;
 
 /**
- * Created by yanni on 17.05.2016
+ * @author Yannik Inniger
+ * on 17.05.2016
  */
 public class FinalView extends VBox{
 

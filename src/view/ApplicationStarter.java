@@ -11,7 +11,8 @@ import model.CantonList;
 import model.XmlIO;
 
 /**
- * Created by yanni on 17.05.2016
+ * @author Yannik Inniger
+ * on 17.05.2016
  */
 public class ApplicationStarter extends Application{
 
@@ -24,6 +25,7 @@ public class ApplicationStarter extends Application{
         CantonList model = new CantonList(FXCollections.observableArrayList(XmlIO.readXml()));
         Parent root = new FinalView(model);
         Scene scene = new Scene(root);
+
         String style = getClass().getResource("styles.css").toExternalForm();
         scene.getStylesheets().add(style);
 

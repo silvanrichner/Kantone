@@ -13,7 +13,7 @@ import java.util.*;
 
 /**
  * @author Yannik Inniger
- *         on 22.05.2016
+ * on 17.05.2016
  */
 public class DetailView extends GridPane {
 
@@ -70,7 +70,6 @@ public class DetailView extends GridPane {
     }
 
     private void layoutControls() {
-
         getRowConstraints().add(createColumnConstraint(130));
         for (int i = 0; i != 9; ++i) {
             getRowConstraints().add(createColumnConstraint(30));
@@ -109,7 +108,6 @@ public class DetailView extends GridPane {
         }
         populationChart.setPadding(new Insets(5));
         add(populationChart, 0, 10, 2, 1);
-
     }
 
     private void addEventHandlers() {
@@ -163,7 +161,6 @@ public class DetailView extends GridPane {
                 populationChart.maxWidthProperty().bind(widthProperty().subtract(50));
                 add(populationChart, 0, 10, 2, 1);
             }
-
         }));
         for (int i = 0; i != inhabitantTextFields.size(); ++i) {
             inhabitantTextFields.get(i).textProperty().bindBidirectional(model.getValue().getPopulation().get(model.get().getYearList().get(i)));

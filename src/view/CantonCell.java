@@ -7,7 +7,8 @@ import javafx.scene.image.ImageView;
 import model.Canton;
 
 /**
- * Created by Yannik on 19.05.2016
+ * @author Yannik Inniger
+ * on 17.05.2016
  */
 public class CantonCell extends ListCell<Canton>{
 
@@ -19,7 +20,6 @@ public class CantonCell extends ListCell<Canton>{
         if(canton != null){
             setText(canton.getNameProperty().getValue());
 
-            //set up ImageView
             ImageView flagView = new ImageView();
             flagView.fitHeightProperty().bind(getListView().fixedCellSizeProperty().subtract(8));
             flagView.preserveRatioProperty().setValue(true);

@@ -13,7 +13,8 @@ import model.Canton;
 import model.CantonList;
 
 /**
- * Created by yanni on 17.05.2016
+ * @author Yannik Inniger
+ * on 17.05.2016
  */
 public class SplitPane extends javafx.scene.control.SplitPane{
 

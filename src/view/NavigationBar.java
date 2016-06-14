@@ -15,7 +15,8 @@ import model.XmlIO;
 import java.io.File;
 
 /**
- * Created by yanni on 17.05.2016
+ * @author Yannik Inniger
+ * on 17.05.2016
  */
 public class NavigationBar extends HBox{
 
