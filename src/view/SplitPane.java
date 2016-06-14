@@ -72,12 +72,10 @@ public class SplitPane extends javafx.scene.control.SplitPane{
     }
 
     private void addEventHandlers(){
+        navigation.getTop().setOnKeyPressed(e -> selectedCanton = null);
     }
 
     private void addBindings(){
         selectedCanton.bind(cantonList.focusModelProperty().get().focusedItemProperty());
     }
-
-
-
 }
