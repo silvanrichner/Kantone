@@ -5,10 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Canton;
 import model.CantonList;
 import model.XmlIO;
+
+import java.io.File;
 
 /**
  * @author Yannik Inniger
@@ -29,8 +32,9 @@ public class ApplicationStarter extends Application{
         String style = getClass().getResource("styles.css").toExternalForm();
         scene.getStylesheets().add(style);
 
+        window.getIcons().add(new Image("resources/app-icon.jpg"));
+        window.setTitle("Kantons App");
         window.setScene(scene);
-        window.setTitle("Test");
         window.setHeight(800);
         window.setWidth(1000);
         window.setMinWidth(800);

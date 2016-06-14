@@ -1,6 +1,5 @@
 package view;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,9 +15,8 @@ public class CantonCell extends ListCell<Canton>{
     public void updateItem(Canton canton, boolean empty){
         super.updateItem(canton, empty);
         setGraphic(null);
-        setText(null);
         if(canton != null){
-            setText(canton.getNameProperty().getValue());
+            textProperty().bind(canton.getNameProperty());
 
             ImageView flagView = new ImageView();
             flagView.fitHeightProperty().bind(getListView().fixedCellSizeProperty().subtract(8));
